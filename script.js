@@ -4,7 +4,6 @@ let pokemonABuscar = document.getElementById("buscador");
 let divDeSalida = document.getElementById("out");
 let divDeInfo = document.getElementById("info");
 let data;
-let idPokemonActual;
 
 botonBusqueda.addEventListener("click",()=>{
     recibirInfoPokemonBoton();
@@ -44,8 +43,7 @@ async function recibirInfoExterna(enlaceAPI, fuc) {
     }else{
         try {
             const response = await fetch(`${enlaceAPI}`);
-            data = await response.json();
-            fuc(data);
+            fuc(await response.json());
         } catch (error) {
             busquedaFallida(error);
         }
@@ -75,7 +73,7 @@ function datoVacio() {
 async function mostrarInfoPokemon(infoPokemon) {
     document.getElementById('out').innerHTML='';
     document.getElementById('info').innerHTML='';
-    idPokemonActual = infoPokemon.id;
+    let idPokemonActual = infoPokemon.id;
 
     divDeSalida.innerHTML=`<div class="card text-center">
     <div class="card-header">
