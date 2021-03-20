@@ -9,6 +9,10 @@ botonBusqueda.addEventListener("click",()=>{
     recibirInfoPokemonBoton();
 },false)
 
+window.addEventListener("keypress", function (event) {
+    if (event.key=='Enter') recibirInfoPokemonBoton();
+});
+
 async function recibirInfoPokemonBoton() {
     let valorBuscador = pokemonABuscar.value;
     if(valorBuscador=="") datoVacio();
