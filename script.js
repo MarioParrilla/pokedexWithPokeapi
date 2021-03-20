@@ -10,7 +10,9 @@ botonBusqueda.addEventListener("click",()=>{
 },false)
 
 async function recibirInfoPokemonBoton() {
-    if(pokemonABuscar.value=="") datoVacio();
+    let valorBuscador = pokemonABuscar.value;
+    if(valorBuscador=="") datoVacio();
+    else if(isNaN(valorBuscador)==false)recibirInfoPokemonIndex(valorBuscador);
     else{
         try {
             let pokemon = pokemonABuscar.value.toLowerCase();
