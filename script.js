@@ -162,12 +162,20 @@ function cargarHabilidades(infoPokemon) {
 }
 
 function cargarMovimientos(infoPokemon) {
-    for (const key in infoPokemon.moves) {
+    if (infoPokemon.moves.length==0) {
         var ul = document.getElementById("listaAtaques");
         var li = document.createElement(`li`);
-        li.setAttribute("class", "list-group-item list-group-item-dark");
-        li.appendChild(document.createTextNode(`${infoPokemon.moves[key].move.name}`));
+        li.setAttribute("class", "list-group-item list-group-item-danger");
+        li.appendChild(document.createTextNode(`No se han encontrado`));
         ul.appendChild(li);
+    } else {
+        for (const key in infoPokemon.moves) {
+            var ul = document.getElementById("listaAtaques");
+            var li = document.createElement(`li`);
+            li.setAttribute("class", "list-group-item list-group-item-dark");
+            li.appendChild(document.createTextNode(`${infoPokemon.moves[key].move.name}`));
+            ul.appendChild(li);
+        }
     }
 }
 
@@ -175,7 +183,7 @@ function cargarSitiosEncontrar(infoPokemon) {
     if (infoPokemon.length==0) {
         var ul = document.getElementById("listaSitios");
             var li = document.createElement(`li`);
-            li.setAttribute("class", "list-group-item list-group-item-dark");
+            li.setAttribute("class", "list-group-item list-group-item-danger");
             li.appendChild(document.createTextNode(`Ningún lado`));
             ul.appendChild(li);
     }else{
