@@ -13,9 +13,10 @@ window.addEventListener("keypress", function (event) {
     if (event.key=='Enter') recibirInfoPokemonBoton();
 });
 
+
 async function recibirInfoPokemonBoton() {
     let valorBuscador = pokemonABuscar.value;
-    if(valorBuscador=="") datoVacio();
+    if(valorBuscador=="") recibirInfoPokemonIndex(1);
     else if(isNaN(valorBuscador)==false)recibirInfoPokemonIndex(valorBuscador);
     else{
         try {
